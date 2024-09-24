@@ -36,3 +36,78 @@
     transform: rotate(360deg);
   }
 }
+.buttonfirst {
+  margin-left: 60px;
+  margin-right: 50px;
+  margin-top: 40px;
+  margin-bottom: 60px;
+  padding: 12px;
+  border-radius: 35%;
+  background-color: black;
+  color: white;
+  transition: background-color 1s, color 1s;
+  font-family: courier;
+}
+.buttonfirst:hover {
+  background-color: white;
+  color: black;
+}
+
+.buttonsecond {
+  margin-left: 60px;
+  margin-right: 50px;
+  margin-top: 40px;
+  margin-bottom: 60px;
+  padding: 12px;
+  border-radius: 35%;
+  background-color: black;
+  color: white;
+  transition: background-color 1s, color 1s;
+  font-family: courier;
+}
+.buttonsecond:hover {
+  background-color: white;
+  color: black;
+}
+.buttonthird {
+  padding: 12px;
+  border-radius: 35%;
+  background-color: black;
+  color: white;
+  transition: background-color 1s, color 1s;
+  font-family: courier;
+  margin-left: 20px;
+}
+.buttonthird:hover {
+  background-color: white;
+  color: black;
+}
+.name {
+  font-family: courier;
+  font-size: 30px;
+}
+.password {
+  font-family: courier;
+  font-size: 30px;
+}
+.input {
+  font-size: 20px;
+}
+.pre {
+  font-family: courier;
+  font-size: 30px;
+}
+.error {
+  color: red;
+  margin-left: 580px;
+  font-family: courier;
+  font-size: 30px;
+}
+:root {
+  background-color: rgb(255, 241, 225);
+}
+.valut {
+  margin-left: 70px;
+  font-family: courier;
+  font-size: 30px;
+}
