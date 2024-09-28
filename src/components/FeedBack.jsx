@@ -1,26 +1,19 @@
 import React, { useEffect, useState } from "react";
+import { API_URL } from "./config";
+import { ERROR_MESSAGE } from "./qwer";
 
-const apiUrl = `https://api.exchangerate-api.com/v4/latest/USD`;
 export default function FeedBack() {
-  const [exchangeRateUSD, setExchangeRateUSD] = useState(null);
-  const [exchangeRateEUR, setExchangeRateEUR] = useState(null);
-  const [exchangeRateAED, setExchangeRateAED] = useState(null);
+  const [exchangeRates, setExchangeRates] = useState(null);
   const [error, setError] = useState(null);
 
   useEffect(() => {
     const fetchExchangeRates = async () => {
       try {
-        const response = await fetch(apiUrl);
+        const response = await fetch(API_URL);
         const data = await response.json();
-        setExchangeRateUSD(data.rates.UAH);
-
-        const euroToUAH = (data.rates.UAH / data.rates.EUR).toFixed(2);
-        setExchangeRateEUR(euroToUAH);
-
-        const aedToUAH = (data.rates.UAH / data.rates.AED).toFixed(2);
-        setExchangeRateAED(aedToUAH);
+        setExchangeRates(data.rates);
       } catch (error) {
-        setError("Помилка при завантаженні даних");
+        setError(ERROR_MESSAGE);
         console.error("Помилка:", error);
       }
     };
@@ -35,18 +28,17 @@ export default function FeedBack() {
         <p style={{ color: "red" }}>{error}</p>
       ) : (
         <>
-          <p className="valut">
-            1 USD ={" "}
-            {exchangeRateUSD ? `${exchangeRateUSD} UAH` : "Завантаження..."}
-          </p>
-          <p className="valut">
-            1 EUR ={" "}
-            {exchangeRateEUR ? `${exchangeRateEUR} UAH` : "Завантаження..."}
-          </p>
-          <p className="valut">
-            1 AED ={" "}
-            {exchangeRateAED ? `${exchangeRateAED} UAH` : "Завантаження..."}
-          </p>
+          {exchangeRates ? (
+            <ul>
+              {Object.entries(exchangeRates).map(([currency, rate]) => (
+                <li key={currency}>
+                  1 {currency} = {rate.toFixed(2)} UAH
+                </li>
+              ))}
+            </ul>
+          ) : (
+            <p>Завантаження...</p>
+          )}
         </>
       )}
     </section>
