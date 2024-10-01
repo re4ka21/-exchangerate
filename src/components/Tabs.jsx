@@ -6,7 +6,7 @@ export default function Tabs({ active, onChange }) {
         active={active === "main" ? "active" : ""}
         onClick={() => onChange("main")}
       >
-        регистрация
+        калькулятор валют
       </button>
 
       <button
